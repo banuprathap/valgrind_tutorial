@@ -1,19 +1,36 @@
-# C++ Boilerplate
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
+## C++ Boilerplate
+[![Build Status](https://travis-ci.org/banuprathap/valgrind_tutorial.svg?branch=master)](https://travis-ci.org/banuprathap/valgrind_tutorial)
+[![Coverage Status](https://coveralls.io/repos/github/banuprathap/valgrind_tutorial/badge.svg?branch=master)](https://coveralls.io/github/banuprathap/valgrind_tutorial?branch=master)
 ---
 
-## Overview
+### Overview
 
-Simple starter C++ project with:
+- A Simple starter C++ Valgrind exercise
+- The repository originally had 2 errors and the task was to fix those errors and submit a clean code
+- Original valgrind results can be found [here](https://github.com/banuprathap/valgrind_tutorial/blob/master/results/initial.txt)
+- Final valgrind output after fixing the errors can be found [here](https://github.com/banuprathap/valgrind_tutorial/blob/master/results/final.txt)
 
-- cmake
-- googletest
+### Fixed Errors
 
-## Installation
+- I had to initialize the boolean variable terminator
+- I had to delete the pointer *readings* in **AnalogSensor::Read()**
 
-- Checkout the repo (and submodules)
+### Running Valgrind
+
+- Make sure you have valgrind installed in your system. If not run,
+```bash
+sudo apt-get install valgrind
 ```
-$ git clone --recursive https://github.com/dpiet/cpp-boilerplate.git
+- Clone the repository and inside the repository,
+```bash
+mkdir -p build
+cd build
+cmake ..
+make
+valgrind --leak-check=full ./app/shell-app
+```
+- To run the function profiler,
+```bash
+valgrind --tool=callgrind ./app/shell-app
 ```
 
